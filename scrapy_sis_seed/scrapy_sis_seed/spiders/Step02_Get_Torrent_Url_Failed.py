@@ -28,10 +28,13 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         pagename = response.url.split("/")[-1]
         torrentlist = response.css('dl.t_attachlist a[target="_blank"]::attr(href)')
+        sizetext = response.css('title::text').re_first(r'(\d+(\.|\,)?\d+ *?(G|g|M|m))')
+        if sizetext is None :
+            sizetext = response.css('div.t_msgfont::text').re_first(r'(\d+(\.|\,)?\d+ *?(G|g|M|m))')
 
         for torrent in torrentlist:
                     item = SISSeedUrlItem()
                     item['idurl'] = pagename
                     item['downloadurl'] = urls_prefix + torrent.get()
-                    item['sizetype'] = response.css('div.t_msgfont::text').re_first(r'(\d+(\.|\,)?\d+ *?(G|g|M|m))')                  
+                    item['sizetype'] = sizetext                  
                     yield  item
