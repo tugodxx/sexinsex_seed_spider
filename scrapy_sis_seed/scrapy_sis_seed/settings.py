@@ -17,7 +17,7 @@ NEWSPIDER_MODULE = 'scrapy_sis_seed.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapy_sis_seed (+http://www.yourdomain.com)'
-
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
@@ -89,6 +89,7 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 FEED_EXPORT_ENCODING='utf-8'
+#FEED_EXPORT_ENCODING='GBK'
 # sqlite 配置
 SQLITE_DB_NAME = 'scrapy.db'
 #ITEM_PIPELINES = {

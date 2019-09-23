@@ -5,7 +5,7 @@ from datetime import timedelta
 import re
 import time
 import scrapy
-from scrapy_sis_seed.configstring import urls_prefix
+from scrapy_sis_seed.configstring import urls_prefix, startTime, endTime
 from scrapy_sis_seed.items import SISThreadUrlItem
 
 # <a href="forum-229-1.html">Western Authorship Seed | 欧美成人无码原创区</a>
@@ -33,8 +33,6 @@ class QuotesSpider(scrapy.Spider):
         threadlist = tabless.css('tbody')
         firstTime = datetime.strptime(threadlist[0].css('td.author em::text').get(), '%Y-%m-%d')
         finalTime = datetime.strptime(threadlist[-1].css('td.author em::text').get(), '%Y-%m-%d')
-        startTime = datetime(2019, 9, 15, 0, 0)
-        endTime = startTime - timedelta(days=6)
         if firstTime < endTime :
             exit()
         elif firstTime <= startTime and finalTime <= startTime and finalTime >= endTime :
