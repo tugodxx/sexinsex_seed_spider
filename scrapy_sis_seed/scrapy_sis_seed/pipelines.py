@@ -56,6 +56,7 @@ class SeedUrlPipeline(object):
         #print("  itkeys: \t%s" % itkeys, flush=True)
         #print("  itvals: \t%s" % itvals, flush=True)
         self.db_cur.execute(sql, ivals)     # WARNING: Does NOT handle '[]'s ==> use: '' in spider
+        self.db_conn.commit()
 
 class ThreadUrlPipeline(object):
 
@@ -90,4 +91,6 @@ class ThreadUrlPipeline(object):
         #print (sql)
         #print("  itkeys: \t%s" % itkeys, flush=True)
         #print("  itvals: \t%s" % itvals, flush=True)
-        self.db_cur.execute(sql, ivals)     # WARNING: Does NOT handle '[]'s ==> use: '' in spider
+        self.db_cur.execute(sql, ivals)     
+        self.db_conn.commit()
+        # WARNING: Does NOT handle '[]'s ==> use: '' in spider

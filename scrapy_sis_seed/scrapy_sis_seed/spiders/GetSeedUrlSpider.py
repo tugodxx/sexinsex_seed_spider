@@ -7,13 +7,13 @@ import time
 import scrapy
 import sqlite3
 
-from scrapy_sis_seed.getThreadurl import urlfailedrows
-from scrapy_sis_seed.configstring import urls_prefix
+from getThreadurl import urlrows
+from configstring import urls_prefix
 from scrapy_sis_seed.items import SISSeedUrlItem
 
-class QuotesSpider(scrapy.Spider):
-    name = "GetSeedUrlFailed"
-    start_urls = urlfailedrows
+class GetSeedUrlSpider(scrapy.Spider):
+    name = "GetSeedUrl"
+    start_urls = urlrows
 
     custom_settings = {
         'DOWNLOAD_DELAY': 0.5,
